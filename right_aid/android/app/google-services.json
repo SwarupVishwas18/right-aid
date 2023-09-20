@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "527767607365",
+    "project_id": "right-aid",
+    "storage_bucket": "right-aid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527767607365:android:469706432b85dbac966b2c",
+        "android_client_info": {
+          "package_name": "com.example.right_aid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb0llXbEbQhnyr8xr0Ltce5DyCwjyu6mE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

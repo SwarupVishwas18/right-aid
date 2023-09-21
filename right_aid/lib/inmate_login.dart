@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:right_aid/firebase_options.dart';
 import 'utilities/form_validation.dart';
+import 'utilities/user.dart';
+import 'home.dart';
 
 class InmateLogin extends StatefulWidget {
   const InmateLogin({super.key});
@@ -14,7 +16,6 @@ class InmateLogin extends StatefulWidget {
 class _InmateLoginState extends State<InmateLogin> {
   late final TextEditingController password;
   late final TextEditingController cnr;
-
   @override
   void initState() {
     cnr = TextEditingController();
@@ -41,19 +42,29 @@ class _InmateLoginState extends State<InmateLogin> {
     //     FirebaseFirestore.instance.collection('inmate').doc();
     final CollectionReference inmateCollection =
         FirebaseFirestore.instance.collection('inmate');
-    final QuerySnapshot querySnapshotOne = await inmateCollection
-        .where('cnr', isEqualTo: int.parse(cnr.text))
-        .get();
+    final QuerySnapshot querySnapshotOne =
+        await inmateCollection.where('cnr', isEqualTo: cnr.text).get();
     if (querySnapshotOne.docs.isNotEmpty) {
       final QuerySnapshot querySnapshotTwo = await inmateCollection
-          .where('cnr', isEqualTo: int.parse(cnr.text))
-          .where('is_verified', isEqualTo: true)
+          .where('cnr', isEqualTo: cnr.text)
+          .where('password', isEqualTo: (password.text))
           .get();
+
       if (querySnapshotTwo.docs.isNotEmpty) {
-        FormValidation.showToast('LogIn');
+        final QuerySnapshot querySnapshotThree = await inmateCollection
+            .where('cnr', isEqualTo: cnr.text)
+            .where('is_verified', isEqualTo: true)
+            .get();
+        if (querySnapshotThree.docs.isNotEmpty) {
+          FormValidation.showToast('LogIn Successful');
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Home()));
+        } else {
+          //we can add alertbox
+          FormValidation.showToast('Verification Pending');
+        }
       } else {
-        //we can add alertbox
-        FormValidation.showToast('Verification Pending');
+        FormValidation.showToast('Incorrect Password');
       }
     } else {
       FormValidation.showToast('CNR not found');

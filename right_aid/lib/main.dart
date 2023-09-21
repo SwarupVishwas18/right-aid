@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:right_aid/case_request.dart';
 import 'package:right_aid/case_status.dart';
 import 'package:right_aid/file_greivance.dart';
 import 'package:right_aid/home.dart';
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const PendingCase(),
+      home: const LawyerConnect(),
     );
   }
 }

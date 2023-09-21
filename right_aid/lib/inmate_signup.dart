@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'utilities/form_validation.dart';
 import 'firebase_options.dart';
+import 'inmate_login.dart';
+import 'utilities/form_validation.dart';
 
 class InmateSignup extends StatefulWidget {
   const InmateSignup({super.key});
@@ -37,7 +39,7 @@ class _InmateSignupState extends State<InmateSignup> {
       'name': name.text,
       'gender': gender.text,
       'age': int.parse(age.text),
-      'cnr': int.parse(cnr.text),
+      'cnr': cnr.text,
       'pid': int.parse(pid.text),
       'handler_name': handlerName.text,
       'phone_no': int.parse(phoneNo.text),
@@ -62,6 +64,9 @@ class _InmateSignupState extends State<InmateSignup> {
       FormValidation.showToast('Fill all details in the Form');
     } else {
       storeInmateData();
+      FormValidation.showToast('SignUp Successful');
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => (InmateLogin())));
     }
   }
 

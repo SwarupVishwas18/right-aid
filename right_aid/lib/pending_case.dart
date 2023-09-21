@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CurrentCase extends StatelessWidget {
-  const CurrentCase({super.key});
+class PendingCase extends StatelessWidget {
+  const PendingCase({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -271,6 +271,20 @@ class CurrentCase extends StatelessWidget {
                         ],
                       ),
                     )),
+
+                const TextField(
+                  maxLines: 8,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black, width: 1.0),
+                          borderRadius: BorderRadius.horizontal(
+                              left: Radius.circular(10),
+                              right: Radius.circular(10))),
+                      hintText: "Enter your tasks description",
+                      hintStyle: TextStyle(color: Colors.black12)),
+                ),
+                ElevatedButton(onPressed: () => {}, child: const Text("Accept"))
               ]),
             ),
           )),

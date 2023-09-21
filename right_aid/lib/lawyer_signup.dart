@@ -131,20 +131,6 @@ class LawyerSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.black, width: 1.0),
-                                      borderRadius: BorderRadius.horizontal(
-                                          left: Radius.circular(10),
-                                          right: Radius.circular(10))),
-                                  hintText: "Is Probono Lawyer (yes/no)",
-                                  hintStyle: TextStyle(color: Colors.black54)),
-                            ),
-                          ),
                           const SizedBox(
                             height: 10,
                           ),

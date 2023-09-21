@@ -47,13 +47,22 @@ class _InmateLoginState extends State<InmateLogin> {
     if (querySnapshotOne.docs.isNotEmpty) {
       final QuerySnapshot querySnapshotTwo = await inmateCollection
           .where('cnr', isEqualTo: int.parse(cnr.text))
-          .where('is_verified', isEqualTo: true)
+          .where('password', isEqualTo: (password.text))
           .get();
+
       if (querySnapshotTwo.docs.isNotEmpty) {
-        FormValidation.showToast('LogIn');
+        final QuerySnapshot querySnapshotThree = await inmateCollection
+            .where('cnr', isEqualTo: int.parse(cnr.text))
+            .where('is_verified', isEqualTo: true)
+            .get();
+        if (querySnapshotThree.docs.isNotEmpty) {
+          FormValidation.showToast('LogIn');
+        } else {
+          //we can add alertbox
+          FormValidation.showToast('Verification Pending');
+        }
       } else {
-        //we can add alertbox
-        FormValidation.showToast('Verification Pending');
+        FormValidation.showToast('Incorrect Password');
       }
     } else {
       FormValidation.showToast('CNR not found');

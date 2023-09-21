@@ -8,6 +8,8 @@ import 'package:right_aid/inmate_signup.dart';
 import 'package:right_aid/lawyer_signup.dart';
 import 'package:right_aid/medical_status.dart';
 import 'package:right_aid/seminars_view.dart';
+import 'package:right_aid/lawyer_home.dart';
+import 'package:right_aid/lawyer_connect.dart';
 import 'package:right_aid/current_case.dart';
 
 void main() {
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const InmateLogin(),
+      home: const LawyerConnect(),
     );
   }
 }

@@ -1,13 +1,105 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'utilities/form_validation.dart';
+import 'firebase_options.dart';
 
-class InmateSignup extends StatelessWidget {
+class InmateSignup extends StatefulWidget {
   const InmateSignup({super.key});
+
+  @override
+  State<InmateSignup> createState() => _InmateSignupState();
+}
+
+class _InmateSignupState extends State<InmateSignup> {
+  late final TextEditingController name;
+  late final TextEditingController gender;
+  late final TextEditingController age;
+  late final TextEditingController cnr;
+  late final TextEditingController pid;
+  late final TextEditingController handlerName;
+  late final TextEditingController phoneNo;
+  late final TextEditingController emailId;
+  late final TextEditingController relation;
+  late final TextEditingController password;
+
+  void storeInmateData() async {
+    try {
+      await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform);
+      print('Initialized');
+    } catch (e) {
+      print('Error initializing Firebase: $e');
+    }
+    final inmateDocumentReference =
+        FirebaseFirestore.instance.collection('inmate').doc();
+    await inmateDocumentReference.set({
+      'name': name.text,
+      'gender': gender.text,
+      'age': int.parse(age.text),
+      'cnr': int.parse(cnr.text),
+      'pid': int.parse(pid.text),
+      'handler_name': handlerName.text,
+      'phone_no': int.parse(phoneNo.text),
+      'email_id': emailId.text,
+      'relation': relation.text,
+      'password': password.text,
+      'is_verified': false,
+    });
+  }
+
+  void clicked() {
+    if (FormValidation.isTextEditingControllerEmpty(name) ||
+        FormValidation.isTextEditingControllerEmpty(gender) ||
+        FormValidation.isTextEditingControllerEmpty(age) ||
+        FormValidation.isTextEditingControllerEmpty(cnr) ||
+        FormValidation.isTextEditingControllerEmpty(pid) ||
+        FormValidation.isTextEditingControllerEmpty(handlerName) ||
+        FormValidation.isTextEditingControllerEmpty(phoneNo) ||
+        FormValidation.isTextEditingControllerEmpty(emailId) ||
+        FormValidation.isTextEditingControllerEmpty(relation) ||
+        FormValidation.isTextEditingControllerEmpty(password)) {
+      FormValidation.showToast('Fill all details in the Form');
+    } else {
+      storeInmateData();
+    }
+  }
+
+  @override
+  void initState() {
+    name = TextEditingController();
+    gender = TextEditingController();
+    age = TextEditingController();
+    cnr = TextEditingController();
+    pid = TextEditingController();
+    handlerName = TextEditingController();
+    phoneNo = TextEditingController();
+    emailId = TextEditingController();
+    relation = TextEditingController();
+    password = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    name.dispose();
+    gender.dispose();
+    age.dispose();
+    cnr.dispose();
+    pid.dispose();
+    handlerName.dispose();
+    phoneNo.dispose();
+    emailId.dispose();
+    relation.dispose();
+    password.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-         height: MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/img/homebg.png"), fit: BoxFit.cover)),
@@ -46,9 +138,10 @@ class InmateSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: name,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -63,9 +156,10 @@ class InmateSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: gender,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -80,9 +174,10 @@ class InmateSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: age,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -97,9 +192,10 @@ class InmateSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: cnr,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -114,9 +210,10 @@ class InmateSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: pid,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -135,9 +232,10 @@ class InmateSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: handlerName,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -152,9 +250,10 @@ class InmateSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: phoneNo,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -169,9 +268,10 @@ class InmateSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: emailId,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -186,9 +286,10 @@ class InmateSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: relation,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -203,9 +304,10 @@ class InmateSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: password,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -224,7 +326,7 @@ class InmateSignup extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 40),
                             child: ElevatedButton(
-                              onPressed: () => {},
+                              onPressed: () => {clicked()},
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all<
                                           Color>(

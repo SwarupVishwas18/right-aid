@@ -1,7 +1,73 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:right_aid/firebase_options.dart';
+import 'utilities/form_validation.dart';
 
-class InmateLogin extends StatelessWidget {
+class InmateLogin extends StatefulWidget {
   const InmateLogin({super.key});
+
+  @override
+  State<InmateLogin> createState() => _InmateLoginState();
+}
+
+class _InmateLoginState extends State<InmateLogin> {
+  late final TextEditingController password;
+  late final TextEditingController cnr;
+
+  @override
+  void initState() {
+    cnr = TextEditingController();
+    password = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    cnr.dispose();
+    password.dispose();
+    super.dispose();
+  }
+
+  void checkCredentials() async {
+    try {
+      await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform);
+      print('Initialized');
+    } catch (e) {
+      print('Error initializing Firebase: $e');
+    }
+    // final inmateDocumentReference =
+    //     FirebaseFirestore.instance.collection('inmate').doc();
+    final CollectionReference inmateCollection =
+        FirebaseFirestore.instance.collection('inmate');
+    final QuerySnapshot querySnapshotOne = await inmateCollection
+        .where('cnr', isEqualTo: int.parse(cnr.text))
+        .get();
+    if (querySnapshotOne.docs.isNotEmpty) {
+      final QuerySnapshot querySnapshotTwo = await inmateCollection
+          .where('cnr', isEqualTo: int.parse(cnr.text))
+          .where('is_verified', isEqualTo: true)
+          .get();
+      if (querySnapshotTwo.docs.isNotEmpty) {
+        FormValidation.showToast('LogIn');
+      } else {
+        //we can add alertbox
+        FormValidation.showToast('Verification Pending');
+      }
+    } else {
+      FormValidation.showToast('CNR not found');
+    }
+  }
+
+  void clicked() {
+    if (FormValidation.isTextEditingControllerEmpty(cnr) ||
+        FormValidation.isTextEditingControllerEmpty(password)) {
+      FormValidation.showToast('Fill all details in the Form');
+    } else {
+      checkCredentials();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +111,10 @@ class InmateLogin extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: cnr,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -62,9 +129,10 @@ class InmateLogin extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: password,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -83,7 +151,7 @@ class InmateLogin extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 40),
                             child: ElevatedButton(
-                              onPressed: () => {},
+                              onPressed: () => {clicked()},
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all<
                                           Color>(

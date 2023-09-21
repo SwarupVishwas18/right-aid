@@ -59,7 +59,7 @@ class _InmateSignupState extends State<InmateSignup> {
         FormValidation.isTextEditingControllerEmpty(emailId) ||
         FormValidation.isTextEditingControllerEmpty(relation) ||
         FormValidation.isTextEditingControllerEmpty(password)) {
-      FormValidation.showToast();
+      FormValidation.showToast('Fill all details in the Form');
     } else {
       storeInmateData();
     }
@@ -99,7 +99,7 @@ class _InmateSignupState extends State<InmateSignup> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-         height: MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/img/homebg.png"), fit: BoxFit.cover)),

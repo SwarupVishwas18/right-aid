@@ -145,9 +145,11 @@ class Home extends StatelessWidget {
                     width: 20,
                   ),
                   ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              const Color.fromARGB(255, 31, 44, 79))),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(255, 31, 44, 79),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5))),
                       onPressed: () => {},
                       child: const Column(
                         children: [
@@ -168,13 +170,15 @@ class Home extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(children: [
                   ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              const Color.fromARGB(255, 31, 44, 79))),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(255, 31, 44, 79),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5))),
                       onPressed: () => {},
                       child: const Column(
                         children: [
-                          Image(image: AssetImage("assets/img/medical_status.png")),
+                          Image(image: AssetImage("assets/img/medical.png")),
                           Text(
                             'Medical Status',
                             style: TextStyle(color: Colors.white),
@@ -185,9 +189,11 @@ class Home extends StatelessWidget {
                     width: 20,
                   ),
                   ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              const Color.fromARGB(255, 31, 44, 79))),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(255, 31, 44, 79),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5))),
                       onPressed: () => {},
                       child: const Column(
                         children: [

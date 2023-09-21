@@ -10,6 +10,7 @@ import 'package:right_aid/medical_status.dart';
 import 'package:right_aid/seminars_view.dart';
 import 'package:right_aid/lawyer_home.dart';
 import 'package:right_aid/lawyer_connect.dart';
+import 'package:right_aid/current_case.dart';
 
 void main() {
   runApp(const MyApp());

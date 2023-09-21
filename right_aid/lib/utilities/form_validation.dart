@@ -6,9 +6,9 @@ class FormValidation {
     return controller.text.isEmpty;
   }
 
-  static void showToast() {
+  static void showToast(var str) {
     Fluttertoast.showToast(
-      msg: 'Fill all details in the Form',
+      msg: str,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,

@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:right_aid/firebase_options.dart';
 import 'utilities/form_validation.dart';
+import 'utilities/user.dart';
+import 'home.dart';
 
 class InmateLogin extends StatefulWidget {
   const InmateLogin({super.key});
@@ -14,7 +16,6 @@ class InmateLogin extends StatefulWidget {
 class _InmateLoginState extends State<InmateLogin> {
   late final TextEditingController password;
   late final TextEditingController cnr;
-
   @override
   void initState() {
     cnr = TextEditingController();
@@ -55,7 +56,9 @@ class _InmateLoginState extends State<InmateLogin> {
             .where('is_verified', isEqualTo: true)
             .get();
         if (querySnapshotThree.docs.isNotEmpty) {
-          FormValidation.showToast('LogIn');
+          FormValidation.showToast('LogIn Successful');
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Home()));
         } else {
           //we can add alertbox
           FormValidation.showToast('Verification Pending');

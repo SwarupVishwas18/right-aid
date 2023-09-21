@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:right_aid/home.dart';
 import 'package:right_aid/inmate_login.dart';
+import 'package:right_aid/loading.dart';
+import 'package:right_aid/inmate_signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const InmateLogin(),
+      home: const Home(),
     );
   }
 }

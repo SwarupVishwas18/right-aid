@@ -73,6 +73,7 @@ class InmateLogin extends StatelessWidget {
                                           right: Radius.circular(10))),
                                   hintText: "Password",
                                   hintStyle: TextStyle(color: Colors.black12)),
+                              obscureText: true,
                             ),
                           ),
                           const SizedBox(

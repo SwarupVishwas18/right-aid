@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:right_aid/case_status.dart';
 import 'package:right_aid/home.dart';
 import 'package:right_aid/inmate_login.dart';
 import 'package:right_aid/loading.dart';
 import 'package:right_aid/inmate_signup.dart';
+import 'package:right_aid/lawyer_signup.dart';
+import 'package:right_aid/medical_status.dart';
+import 'package:right_aid/seminars_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,6 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+          height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/img/homebg.png"),

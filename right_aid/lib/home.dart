@@ -7,6 +7,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/img/home.png"), fit: BoxFit.cover)),
@@ -15,13 +16,13 @@ class Home extends StatelessWidget {
             height: 25,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 40),
+            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
             child: Container(
               decoration: BoxDecoration(
                 color: const Color.fromARGB(242, 248, 247, 238),
                 border: Border.all(
                     width: 1.0, color: const Color.fromARGB(255, 0, 0, 0)),
-                borderRadius: const BorderRadius.all(Radius.circular(5)),
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
               ),
               child: const Center(
                   child: Padding(
@@ -103,9 +104,9 @@ class Home extends StatelessWidget {
                         padding: EdgeInsets.all(10),
                         child: Column(
                           children: [
-                            Image(image: AssetImage("assets/img/case.png")),
+                            Image(image: AssetImage("assets/img/lawyer.png")),
                             Text(
-                              'Case Status',
+                              'Connect With Lawyer',
                               style: TextStyle(color: Colors.white),
                             )
                           ],
@@ -131,9 +132,10 @@ class Home extends StatelessWidget {
                         padding: EdgeInsets.all(10),
                         child: Column(
                           children: [
-                            Image(image: AssetImage("assets/img/case.png")),
+                            Image(
+                                image: AssetImage("assets/img/Complaint.png")),
                             Text(
-                              'Case Status',
+                              'File Grievence',
                               style: TextStyle(color: Colors.white),
                             )
                           ],
@@ -151,7 +153,7 @@ class Home extends StatelessWidget {
                         children: [
                           Image(image: AssetImage("assets/img/case.png")),
                           Text(
-                            'Case Status',
+                            'Legal Assistant',
                             style: TextStyle(color: Colors.white),
                           )
                         ],
@@ -172,9 +174,9 @@ class Home extends StatelessWidget {
                       onPressed: () => {},
                       child: const Column(
                         children: [
-                          Image(image: AssetImage("assets/img/case.png")),
+                          Image(image: AssetImage("assets/img/medical_status.png")),
                           Text(
-                            'Case Status',
+                            'Medical Status',
                             style: TextStyle(color: Colors.white),
                           )
                         ],
@@ -189,9 +191,9 @@ class Home extends StatelessWidget {
                       onPressed: () => {},
                       child: const Column(
                         children: [
-                          Image(image: AssetImage("assets/img/case.png")),
+                          Image(image: AssetImage("assets/img/Teacher.png")),
                           Text(
-                            'Case Status',
+                            'Training',
                             style: TextStyle(color: Colors.white),
                           )
                         ],

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-class InmateSignup extends StatelessWidget {
-  const InmateSignup({super.key});
+class LawyerSignup extends StatelessWidget {
+  const LawyerSignup({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/img/homebg.png"), fit: BoxFit.cover)),
@@ -56,7 +57,7 @@ class InmateSignup extends StatelessWidget {
                                           left: Radius.circular(10),
                                           right: Radius.circular(10))),
                                   hintText: "Name",
-                                  hintStyle: TextStyle(color: Colors.black12)),
+                                  hintStyle: TextStyle(color: Colors.black54)),
                             ),
                           ),
                           const SizedBox(
@@ -73,7 +74,7 @@ class InmateSignup extends StatelessWidget {
                                           left: Radius.circular(10),
                                           right: Radius.circular(10))),
                                   hintText: "Enrollment Number",
-                                  hintStyle: TextStyle(color: Colors.black12)),
+                                  hintStyle: TextStyle(color: Colors.black54)),
                             ),
                           ),
                           const SizedBox(
@@ -90,7 +91,7 @@ class InmateSignup extends StatelessWidget {
                                           left: Radius.circular(10),
                                           right: Radius.circular(10))),
                                   hintText: "Email",
-                                  hintStyle: TextStyle(color: Colors.black12)),
+                                  hintStyle: TextStyle(color: Colors.black54)),
                             ),
                           ),
                           const SizedBox(
@@ -107,7 +108,7 @@ class InmateSignup extends StatelessWidget {
                                           left: Radius.circular(10),
                                           right: Radius.circular(10))),
                                   hintText: "Contact Number",
-                                  hintStyle: TextStyle(color: Colors.black12)),
+                                  hintStyle: TextStyle(color: Colors.black54)),
                             ),
                           ),
                           const SizedBox(
@@ -124,7 +125,7 @@ class InmateSignup extends StatelessWidget {
                                           left: Radius.circular(10),
                                           right: Radius.circular(10))),
                                   hintText: "Firm",
-                                  hintStyle: TextStyle(color: Colors.black12)),
+                                  hintStyle: TextStyle(color: Colors.black54)),
                             ),
                           ),
                           const SizedBox(
@@ -141,7 +142,7 @@ class InmateSignup extends StatelessWidget {
                                           left: Radius.circular(10),
                                           right: Radius.circular(10))),
                                   hintText: "Is Probono Lawyer (yes/no)",
-                                  hintStyle: TextStyle(color: Colors.black12)),
+                                  hintStyle: TextStyle(color: Colors.black54)),
                             ),
                           ),
                           const SizedBox(
@@ -161,7 +162,7 @@ class InmateSignup extends StatelessWidget {
                                           left: Radius.circular(10),
                                           right: Radius.circular(10))),
                                   hintText: "Password",
-                                  hintStyle: TextStyle(color: Colors.black12)),
+                                  hintStyle: TextStyle(color: Colors.black54)),
                               obscureText: true,
                             ),
                           ),

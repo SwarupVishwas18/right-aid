@@ -41,18 +41,17 @@ class _InmateLoginState extends State<InmateLogin> {
     //     FirebaseFirestore.instance.collection('inmate').doc();
     final CollectionReference inmateCollection =
         FirebaseFirestore.instance.collection('inmate');
-    final QuerySnapshot querySnapshotOne = await inmateCollection
-        .where('cnr', isEqualTo: int.parse(cnr.text))
-        .get();
+    final QuerySnapshot querySnapshotOne =
+        await inmateCollection.where('cnr', isEqualTo: cnr.text).get();
     if (querySnapshotOne.docs.isNotEmpty) {
       final QuerySnapshot querySnapshotTwo = await inmateCollection
-          .where('cnr', isEqualTo: int.parse(cnr.text))
+          .where('cnr', isEqualTo: cnr.text)
           .where('password', isEqualTo: (password.text))
           .get();
 
       if (querySnapshotTwo.docs.isNotEmpty) {
         final QuerySnapshot querySnapshotThree = await inmateCollection
-            .where('cnr', isEqualTo: int.parse(cnr.text))
+            .where('cnr', isEqualTo: cnr.text)
             .where('is_verified', isEqualTo: true)
             .get();
         if (querySnapshotThree.docs.isNotEmpty) {

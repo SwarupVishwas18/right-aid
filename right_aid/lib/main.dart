@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:right_aid/case_status.dart';
+import 'package:right_aid/file_greivance.dart';
 import 'package:right_aid/home.dart';
 import 'package:right_aid/inmate_login.dart';
 import 'package:right_aid/loading.dart';
 import 'package:right_aid/inmate_signup.dart';
+import 'package:right_aid/lawyer_signup.dart';
+import 'package:right_aid/medical_status.dart';
+import 'package:right_aid/seminars_view.dart';
+import 'package:right_aid/current_case.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Home(),
+      home: const CurrentCase(),
     );
   }
 }
@@ -51,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+          height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/img/homebg.png"),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LawyerSignup extends StatelessWidget {
-  const LawyerSignup({super.key});
+class FileGrievance extends StatelessWidget {
+  const FileGrievance({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,18 +9,18 @@ class LawyerSignup extends StatelessWidget {
       body: Container(
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/img/homebg.png"), fit: BoxFit.cover)),
+          color: Color.fromARGB(242, 248, 247, 238),
+        ),
         child: SingleChildScrollView(
           child: Column(children: [
             const SizedBox(
-              height: 20,
+              height: 100,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Container(
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(242, 248, 247, 238),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   border: Border.all(
                       width: 1.0, color: const Color.fromARGB(255, 0, 0, 0)),
                   borderRadius: const BorderRadius.all(Radius.circular(6)),
@@ -31,14 +31,13 @@ class LawyerSignup extends StatelessWidget {
                       height: 30,
                     ),
                     const Text(
-                      "SIGN UP",
+                      "File Grievance",
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 30,
                     ),
-                    const Text("Lawyer's Details : "),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Column(
@@ -56,8 +55,8 @@ class LawyerSignup extends StatelessWidget {
                                       borderRadius: BorderRadius.horizontal(
                                           left: Radius.circular(10),
                                           right: Radius.circular(10))),
-                                  hintText: "Name",
-                                  hintStyle: TextStyle(color: Colors.black54)),
+                                  hintText: "Inmate Name",
+                                  hintStyle: TextStyle(color: Colors.black45)),
                             ),
                           ),
                           const SizedBox(
@@ -73,8 +72,9 @@ class LawyerSignup extends StatelessWidget {
                                       borderRadius: BorderRadius.horizontal(
                                           left: Radius.circular(10),
                                           right: Radius.circular(10))),
-                                  hintText: "Enrollment Number",
-                                  hintStyle: TextStyle(color: Colors.black54)),
+                                  hintText: "Prison Name",
+                                  hintStyle: TextStyle(color: Colors.black45)),
+                              obscureText: false,
                             ),
                           ),
                           const SizedBox(
@@ -90,8 +90,9 @@ class LawyerSignup extends StatelessWidget {
                                       borderRadius: BorderRadius.horizontal(
                                           left: Radius.circular(10),
                                           right: Radius.circular(10))),
-                                  hintText: "Email",
-                                  hintStyle: TextStyle(color: Colors.black54)),
+                                  hintText: "City/State",
+                                  hintStyle: TextStyle(color: Colors.black45)),
+                              obscureText: false,
                             ),
                           ),
                           const SizedBox(
@@ -107,46 +108,10 @@ class LawyerSignup extends StatelessWidget {
                                       borderRadius: BorderRadius.horizontal(
                                           left: Radius.circular(10),
                                           right: Radius.circular(10))),
-                                  hintText: "Contact Number",
-                                  hintStyle: TextStyle(color: Colors.black54)),
+                                  hintText: "Relation with Inmate",
+                                  hintStyle: TextStyle(color: Colors.black45)),
+                              obscureText: false,
                             ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.black, width: 1.0),
-                                      borderRadius: BorderRadius.horizontal(
-                                          left: Radius.circular(10),
-                                          right: Radius.circular(10))),
-                                  hintText: "Firm",
-                                  hintStyle: TextStyle(color: Colors.black54)),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.black, width: 1.0),
-                                      borderRadius: BorderRadius.horizontal(
-                                          left: Radius.circular(10),
-                                          right: Radius.circular(10))),
-                                  hintText: "Is Probono Lawyer (yes/no)",
-                                  hintStyle: TextStyle(color: Colors.black54)),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
                           ),
                           const SizedBox(
                             height: 10,
@@ -162,7 +127,7 @@ class LawyerSignup extends StatelessWidget {
                                           left: Radius.circular(10),
                                           right: Radius.circular(10))),
                                   hintText: "Password",
-                                  hintStyle: TextStyle(color: Colors.black54)),
+                                  hintStyle: TextStyle(color: Colors.black45)),
                               obscureText: true,
                             ),
                           ),
@@ -178,7 +143,7 @@ class LawyerSignup extends StatelessWidget {
                                           Color>(
                                       const Color.fromARGB(255, 31, 44, 79))),
                               child: const Text(
-                                "SIGN UP",
+                                "City/State",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white),

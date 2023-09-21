@@ -7,6 +7,7 @@ class InmateLogin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/img/homebg.png"), fit: BoxFit.cover)),

@@ -7,7 +7,8 @@ class LoadScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      decoration: const BoxDecoration(
+        height: MediaQuery.of(context).size.height,
+        decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage("assets/img/load.png"), fit: BoxFit.cover)),
       child: const Column(children: [

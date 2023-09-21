@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CaseStatus extends StatelessWidget {
-  const CaseStatus({super.key});
+class CurrentCase extends StatelessWidget {
+  const CurrentCase({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,18 +10,33 @@ class CaseStatus extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/img/statusbg.png"),
+                image: AssetImage("assets/img/chat_bg.png"),
                 fit: BoxFit.cover)),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(children: [
             const SizedBox(
-              height: 70,
+              height: 30,
+            ),
+            const Text(
+              "Current Case",
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            ),
+            //add horizontal line
+
+            const Divider(
+              color: Color.fromARGB(255, 186, 183, 183),
+              height: 15,
+              thickness: 0.7,
+              indent: 0,
+              endIndent: 0,
             ),
             Container(
               alignment: Alignment.centerLeft,
-              child: const Text("Case Details"),
+              child: const Text("Case Details",
+                  style: TextStyle(fontWeight: FontWeight.bold)),
             ),
+
             const SizedBox(
               height: 10,
             ),
@@ -65,7 +80,8 @@ class CaseStatus extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.centerLeft,
-              child: const Text("Party Details"),
+              child: const Text("Party Details",
+                  style: TextStyle(fontWeight: FontWeight.bold)),
             ),
             const SizedBox(
               height: 10,
@@ -105,9 +121,7 @@ class CaseStatus extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                       Divider(
-                        color: Colors.black
-                      ),
+                      Divider(color: Colors.black),
                       Row(
                         children: [
                           Text("Respondant : "),
@@ -137,7 +151,8 @@ class CaseStatus extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.centerLeft,
-              child: const Text("Case Status"),
+              child: const Text("Case Status",
+                  style: TextStyle(fontWeight: FontWeight.bold)),
             ),
             const SizedBox(
               height: 10,
@@ -206,7 +221,8 @@ class CaseStatus extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.centerLeft,
-              child: const Text("Acts"),
+              child: const Text("Acts",
+                  style: TextStyle(fontWeight: FontWeight.bold)),
             ),
             const SizedBox(
               height: 10,

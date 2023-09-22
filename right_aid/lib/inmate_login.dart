@@ -161,19 +161,28 @@ class _InmateLoginState extends State<InmateLogin> {
                           const SizedBox(
                             height: 10,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 40),
-                            child: ElevatedButton(
-                              onPressed: () => {clicked()},
-                              style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all<
-                                          Color>(
-                                      const Color.fromARGB(255, 31, 44, 79))),
-                              child: const Text(
-                                "LOGIN",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
+                          TextButton(
+                            onPressed: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Home()))
+                            },
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 40),
+                              child: ElevatedButton(
+                                onPressed: () => {clicked()},
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all<
+                                            Color>(
+                                        const Color.fromARGB(255, 31, 44, 79))),
+                                child: const Text(
+                                  "LOGIN",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
                               ),
                             ),
                           )

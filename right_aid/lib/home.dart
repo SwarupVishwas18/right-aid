@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'utilities/fetch_details.dart';
+import 'package:right_aid/case_status.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -78,7 +79,13 @@ class _Home extends State<Home> {
                                   const Color.fromARGB(255, 31, 44, 79),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5))),
-                          onPressed: () => {},
+                          onPressed: () => {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const CaseStatus()))
+                              },
                           child: const Padding(
                             padding: EdgeInsets.all(10),
                             child: Column(

@@ -11,6 +11,7 @@ import 'package:right_aid/seminars_view.dart';
 import 'package:right_aid/lawyer_home.dart';
 import 'package:right_aid/lawyer_connect.dart';
 import 'package:right_aid/current_case.dart';
+import 'package:right_aid/view_lawyers.dart';
 import 'utilities/fetch_details.dart';
 import 'lawyer_login.dart';
 
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const CaseStatus(),
+      // home: const MyHomePage(title: 'Right Aid'),
+      home: const Home(),
     );
   }
 }
@@ -46,15 +48,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   void inmateCall() {
-    print("Inmate Call!!");
-  }
-
-  void jailorCall() {
-    print("Jailor Call!!");
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const InmateLogin()));
   }
 
   void lawyerCall() {
-    print("Lawyer Call!!");
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const LawyerLogin()));
   }
 
   @override
@@ -153,33 +153,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       const SizedBox(
                         height: 20,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: ElevatedButton(
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all<
-                                        Color>(
-                                    const Color.fromARGB(255, 249, 244, 225))),
-                            onPressed: jailorCall,
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 5, vertical: 5),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image(
-                                      image:
-                                          AssetImage("assets/img/jailor.png")),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text("Prison Authority",
-                                      style: TextStyle(
-                                          color: Color.fromARGB(255, 0, 0, 0))),
-                                ],
-                              ),
-                            )),
                       ),
                       const SizedBox(
                         height: 20,

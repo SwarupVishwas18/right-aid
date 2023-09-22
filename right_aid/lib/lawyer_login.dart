@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:right_aid/firebase_options.dart';
 import 'package:right_aid/lawyer_home.dart';
+import 'package:right_aid/lawyer_signup.dart';
 import 'utilities/form_validation.dart';
 import 'utilities/user.dart';
 import 'utilities/fetch_details.dart';
@@ -136,7 +137,7 @@ class _LawyerLoginState extends State<LawyerLogin> {
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
                               controller: password,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
                                           color: Colors.black, width: 1.0),
@@ -151,25 +152,47 @@ class _LawyerLoginState extends State<LawyerLogin> {
                           const SizedBox(
                             height: 10,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 40),
-                            child: ElevatedButton(
-                              onPressed: () => {clicked()},
-                              style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all<
-                                          Color>(
-                                      const Color.fromARGB(255, 31, 44, 79))),
-                              child: const Text(
-                                "LOGIN",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          )
+                          TextButton(
+                              onPressed: () => {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const LawyerHome()))
+                                  },
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 40),
+                                child: ElevatedButton(
+                                  onPressed: () => {clicked()},
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              const Color.fromARGB(
+                                                  255, 31, 44, 79))),
+                                  child: const Text(
+                                    "LOGIN",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ))
                         ],
                       ),
                     ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    TextButton(
+                        onPressed: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const LawyerSignup()))
+                            },
+                        child: const Text("Create an account instead")),
                     const SizedBox(
                       height: 30,
                     ),

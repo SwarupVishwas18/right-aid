@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:right_aid/utilities/user.dart';
 import 'utilities/fetch_details.dart';
-import 'package:right_aid/case_status.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -61,29 +60,26 @@ class Home extends StatelessWidget {
                               fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                       ],
-                    ),
-        ])),
+                    )
+                  ],
                 ),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              Center(
-                child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35),
-                    child: Row(children: [
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  const Color.fromARGB(255, 31, 44, 79),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5))),
-                          onPressed: () => {   Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const CaseStatus()))},
-                          child: const Column(
+              )),
+            ),
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+          Center(
+            child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 35),
+                child: Row(children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 31, 44, 79),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5))),
+                    onPressed: () => {},
+                    child: const Column(
                       children: [
                         Image(image: AssetImage("assets/img/case.png")),
                         Text(
@@ -101,7 +97,7 @@ class Home extends StatelessWidget {
                         backgroundColor: const Color.fromARGB(255, 31, 44, 79),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5))),
-                    onPressed: () => { },
+                    onPressed: () => {},
                     child: const Column(
                       children: [
                         Image(image: AssetImage("assets/img/law.png")),
@@ -202,7 +198,7 @@ class Home extends StatelessWidget {
                       )),
                 ])),
           )
-      )]),
+        ]),
       ),
     );
   }

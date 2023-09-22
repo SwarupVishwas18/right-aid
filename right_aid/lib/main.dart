@@ -32,10 +32,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-<<<<<<< HEAD
       // home: const MyHomePage(title: 'Right Aid'),
-=======
->>>>>>> c6c04dcc7bcdfcec91602368b3c9df9826a062ee
       home: const Home(),
     );
   }

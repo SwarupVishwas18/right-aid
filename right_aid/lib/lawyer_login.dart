@@ -7,6 +7,7 @@ import 'utilities/form_validation.dart';
 import 'utilities/user.dart';
 import 'utilities/fetch_details.dart';
 import 'home.dart';
+import 'utilities/lawyer.dart';
 
 class LawyerLogin extends StatefulWidget {
   const LawyerLogin({super.key});
@@ -52,6 +53,7 @@ class _LawyerLoginState extends State<LawyerLogin> {
           .get();
       if (querySnapshotTwo.docs.isNotEmpty) {
         FormValidation.showToast('LogIn Successful');
+        Lawyer.setEnrollment(enrollmentNumber);
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => LawyerHome()));
       } else {

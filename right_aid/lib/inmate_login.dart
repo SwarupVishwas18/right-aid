@@ -59,6 +59,7 @@ class _InmateLoginState extends State<InmateLogin> {
             .get();
         if (querySnapshotThree.docs.isNotEmpty) {
           FormValidation.showToast('LogIn Successful');
+          User.setCnr(cnr.text);
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => Home()));
         } else {

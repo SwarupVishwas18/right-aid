@@ -1,7 +1,73 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:right_aid/firebase_options.dart';
+import 'utilities/form_validation.dart';
 
-class FileGrievance extends StatelessWidget {
+class FileGrievance extends StatefulWidget {
   const FileGrievance({super.key});
+  @override
+  State<FileGrievance> createState() => _FileGrievance();
+}
+
+class _FileGrievance extends State<FileGrievance> {
+  late final TextEditingController inmateName;
+  late final TextEditingController prisonName;
+  late final TextEditingController location;
+  late final TextEditingController relation;
+  late final TextEditingController password;
+
+  @override
+  void initState() {
+    inmateName = TextEditingController();
+    prisonName = TextEditingController();
+    location = TextEditingController();
+    relation = TextEditingController();
+    password = TextEditingController();
+    super.initState();
+  }
+
+  void fileGrievance() async {
+    try {
+      await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform);
+      print('Initialized');
+    } catch (e) {
+      print('Error initializing Firebase: $e');
+    }
+    final inmateDocumentReference =
+        FirebaseFirestore.instance.collection('file_grievance').doc();
+    await inmateDocumentReference.set({
+      'inmate_name': inmateName.text,
+      'prison_name': prisonName.text,
+      'location': location.text,
+      'relation': relation.text,
+      'password': password.text,
+    });
+  }
+
+  void clicked() {
+    if (FormValidation.isTextEditingControllerEmpty(inmateName) ||
+        FormValidation.isTextEditingControllerEmpty(prisonName) ||
+        FormValidation.isTextEditingControllerEmpty(location) ||
+        FormValidation.isTextEditingControllerEmpty(relation) ||
+        FormValidation.isTextEditingControllerEmpty(password)) {
+      FormValidation.showToast('Fill all details in the Form');
+    } else {
+      fileGrievance();
+      FormValidation.showToast("Grievance Submitted");
+    }
+  }
+
+  @override
+  void dispose() {
+    inmateName.dispose();
+    prisonName.dispose();
+    location.dispose();
+    relation.dispose();
+    password.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +111,10 @@ class FileGrievance extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: inmateName,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -62,9 +129,10 @@ class FileGrievance extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: prisonName,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -80,9 +148,10 @@ class FileGrievance extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: location,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -98,9 +167,10 @@ class FileGrievance extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: relation,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -116,9 +186,10 @@ class FileGrievance extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: password,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -137,7 +208,7 @@ class FileGrievance extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 40),
                             child: ElevatedButton(
-                              onPressed: () => {},
+                              onPressed: () => {clicked()},
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all<
                                           Color>(

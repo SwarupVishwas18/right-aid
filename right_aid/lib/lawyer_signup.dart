@@ -1,7 +1,79 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:right_aid/firebase_options.dart';
+import 'package:right_aid/lawyer_home.dart';
+import 'package:right_aid/lawyer_login.dart';
+import 'utilities/form_validation.dart';
 
-class LawyerSignup extends StatelessWidget {
+class LawyerSignup extends StatefulWidget {
   const LawyerSignup({super.key});
+  State<LawyerSignup> createState() => _LawyerLoginState();
+}
+
+class _LawyerLoginState extends State<LawyerSignup> {
+  late final TextEditingController name;
+  late final TextEditingController enrollmentNumber;
+  late final TextEditingController emailId;
+  late final TextEditingController contactNo;
+  late final TextEditingController firm;
+  late final TextEditingController password;
+
+  void initState() {
+    name = TextEditingController();
+    enrollmentNumber = TextEditingController();
+    emailId = TextEditingController();
+    contactNo = TextEditingController();
+    firm = TextEditingController();
+    password = TextEditingController();
+    super.initState();
+  }
+
+  void dispose() {
+    name.dispose();
+    enrollmentNumber.dispose();
+    emailId.dispose();
+    contactNo.dispose();
+    firm.dispose();
+    password.dispose();
+    super.dispose();
+  }
+
+  void storeLawyerData() async {
+    try {
+      await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform);
+      print('Initialized');
+    } catch (e) {
+      print('Error initializing Firebase: $e');
+    }
+    final inmateDocumentReference =
+        FirebaseFirestore.instance.collection('lawyer').doc();
+    await inmateDocumentReference.set({
+      'name': name.text,
+      'enrollment_number': enrollmentNumber.text,
+      'email_id': emailId.text,
+      'phone_no': int.parse(contactNo.text),
+      'firm': firm.text,
+      'password': password.text,
+    });
+  }
+
+  void clicked() {
+    if (FormValidation.isTextEditingControllerEmpty(name) ||
+        FormValidation.isTextEditingControllerEmpty(enrollmentNumber) ||
+        FormValidation.isTextEditingControllerEmpty(emailId) ||
+        FormValidation.isTextEditingControllerEmpty(contactNo) ||
+        FormValidation.isTextEditingControllerEmpty(firm) ||
+        FormValidation.isTextEditingControllerEmpty(password)) {
+      FormValidation.showToast('Fill all details in the Form');
+    } else {
+      storeLawyerData();
+      FormValidation.showToast('SignUp Successful');
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => (LawyerLogin())));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +118,10 @@ class LawyerSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: name,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -63,9 +136,10 @@ class LawyerSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: enrollmentNumber,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -80,9 +154,10 @@ class LawyerSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: emailId,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -97,9 +172,10 @@ class LawyerSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: contactNo,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -114,9 +190,10 @@ class LawyerSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: firm,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -137,9 +214,10 @@ class LawyerSignup extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
+                              controller: password,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -158,7 +236,7 @@ class LawyerSignup extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 40),
                             child: ElevatedButton(
-                              onPressed: () => {},
+                              onPressed: () => {clicked()},
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all<
                                           Color>(

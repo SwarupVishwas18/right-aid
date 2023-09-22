@@ -1,7 +1,31 @@
 import 'package:flutter/material.dart';
+import 'utilities/fetch_details.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+  @override
+  State<Home> createState() => _Home();
+}
+
+class _Home extends State<Home> {
+  CaseDetails? caseDetails;
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  fetchData() async {
+    final caseData = await fetchCaseDetails('456789');
+    setState(() {
+      caseDetails = caseData;
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,41 +48,16 @@ class Home extends StatelessWidget {
                     width: 1.0, color: const Color.fromARGB(255, 0, 0, 0)),
                 borderRadius: const BorderRadius.all(Radius.circular(20)),
               ),
-              child: const Center(
+              child: Center(
                   child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
                 child: Row(
                   children: [
                     Text(
-                      "NEXT COURT PROCEEDING : ",
+                      "NEXT COURT PROCEEDING : ${caseDetails?.nextHearingDate}",
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                     ),
-                    SizedBox(
-                      width: 25,
-                    ),
-                    Text(
-                      "28th",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          "OCT",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                        Text(
-                          "2023",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                      ],
-                    )
                   ],
                 ),
               )),

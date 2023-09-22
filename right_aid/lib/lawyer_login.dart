@@ -2,32 +2,32 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:right_aid/firebase_options.dart';
-import 'package:right_aid/inmate_signup.dart';
+import 'package:right_aid/lawyer_home.dart';
 import 'utilities/form_validation.dart';
 import 'utilities/user.dart';
 import 'utilities/fetch_details.dart';
 import 'home.dart';
 
-class InmateLogin extends StatefulWidget {
-  const InmateLogin({super.key});
+class LawyerLogin extends StatefulWidget {
+  const LawyerLogin({super.key});
 
   @override
-  State<InmateLogin> createState() => _InmateLoginState();
+  State<LawyerLogin> createState() => _LawyerLoginState();
 }
 
-class _InmateLoginState extends State<InmateLogin> {
+class _LawyerLoginState extends State<LawyerLogin> {
   late final TextEditingController password;
-  late final TextEditingController cnr;
+  late final TextEditingController enrollmentNumber;
   @override
   void initState() {
-    cnr = TextEditingController();
+    enrollmentNumber = TextEditingController();
     password = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-    cnr.dispose();
+    enrollmentNumber.dispose();
     password.dispose();
     super.dispose();
   }
@@ -40,41 +40,31 @@ class _InmateLoginState extends State<InmateLogin> {
     } catch (e) {
       print('Error initializing Firebase: $e');
     }
-    // final inmateDocumentReference =
-    //     FirebaseFirestore.instance.collection('inmate').doc();
     final CollectionReference inmateCollection =
-        FirebaseFirestore.instance.collection('inmate');
-    final QuerySnapshot querySnapshotOne =
-        await inmateCollection.where('cnr', isEqualTo: cnr.text).get();
+        FirebaseFirestore.instance.collection('lawyer');
+    final QuerySnapshot querySnapshotOne = await inmateCollection
+        .where('enrollment_number', isEqualTo: enrollmentNumber.text)
+        .get();
     if (querySnapshotOne.docs.isNotEmpty) {
       final QuerySnapshot querySnapshotTwo = await inmateCollection
-          .where('cnr', isEqualTo: cnr.text)
+          .where('enrollment_number', isEqualTo: enrollmentNumber.text)
           .where('password', isEqualTo: (password.text))
           .get();
-
       if (querySnapshotTwo.docs.isNotEmpty) {
-        final QuerySnapshot querySnapshotThree = await inmateCollection
-            .where('cnr', isEqualTo: cnr.text)
-            .where('is_verified', isEqualTo: true)
-            .get();
-        if (querySnapshotThree.docs.isNotEmpty) {
-          FormValidation.showToast('LogIn Successful');
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Home()));
-        } else {
-          //we can add alertbox
-          FormValidation.showToast('Verification Pending');
-        }
+        FormValidation.showToast('LogIn Successful');
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LawyerHome()));
       } else {
-        FormValidation.showToast('Incorrect Password');
+        //we can add alertbox
+        FormValidation.showToast('Wrong Password');
       }
     } else {
-      FormValidation.showToast('CNR not found');
+      FormValidation.showToast('Enrollment number not found');
     }
   }
 
   void clicked() {
-    if (FormValidation.isTextEditingControllerEmpty(cnr) ||
+    if (FormValidation.isTextEditingControllerEmpty(enrollmentNumber) ||
         FormValidation.isTextEditingControllerEmpty(password)) {
       FormValidation.showToast('Fill all details in the Form');
     } else {
@@ -110,7 +100,7 @@ class _InmateLoginState extends State<InmateLogin> {
                       height: 30,
                     ),
                     const Text(
-                      "Login as Inmate",
+                      "Login as Lawyer",
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
@@ -127,7 +117,7 @@ class _InmateLoginState extends State<InmateLogin> {
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
-                              controller: cnr,
+                              controller: enrollmentNumber,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -135,7 +125,7 @@ class _InmateLoginState extends State<InmateLogin> {
                                       borderRadius: BorderRadius.horizontal(
                                           left: Radius.circular(10),
                                           right: Radius.circular(10))),
-                                  hintText: "CNR",
+                                  hintText: "Enrollment No:",
                                   hintStyle: TextStyle(color: Colors.black12)),
                             ),
                           ),
@@ -180,18 +170,6 @@ class _InmateLoginState extends State<InmateLogin> {
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    TextButton(
-                        onPressed: () => {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const InmateSignup()))
-                            },
-                        child: const Text("Create an account instead")),
                     const SizedBox(
                       height: 30,
                     ),

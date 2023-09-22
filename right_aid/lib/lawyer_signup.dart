@@ -208,12 +208,6 @@ class _LawyerLoginState extends State<LawyerSignup> {
                           const SizedBox(
                             height: 10,
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
@@ -265,4 +259,3 @@ class _LawyerLoginState extends State<LawyerSignup> {
     );
   }
 }
-

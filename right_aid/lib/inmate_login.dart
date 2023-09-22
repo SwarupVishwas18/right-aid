@@ -14,26 +14,6 @@ class InmateLogin extends StatefulWidget {
   State<InmateLogin> createState() => _InmateLoginState();
 }
 
-void test() {
-  final crnNumber = '456789';
-
-  fetchCaseDetails(crnNumber).then((caseDetails) {
-    print(caseDetails.nextHearingDate);
-    print(caseDetails.stageOfCase);
-    print(caseDetails.coram);
-    print(caseDetails.judicialBranch);
-    print(caseDetails.state);
-    print(caseDetails.district);
-    print(caseDetails.petitioner);
-    print(caseDetails.respondent);
-    print(caseDetails.actsAndSections);
-    print(caseDetails.registrationNumber);
-    print(caseDetails.registrationDate);
-  }).catchError((error) {
-    print(error);
-  });
-}
-
 class _InmateLoginState extends State<InmateLogin> {
   late final TextEditingController password;
   late final TextEditingController cnr;

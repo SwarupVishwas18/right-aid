@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:right_aid/utilities/user.dart';
+import 'utilities/fetch_details.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});

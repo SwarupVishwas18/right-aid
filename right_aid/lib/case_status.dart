@@ -86,7 +86,7 @@ class _CaseStatus extends State<CaseStatus> {
                               SizedBox(
                                 width: 90,
                               ),
-                              Text("STATUS : PENDING")
+                              Text("STATUS : ${caseDetails?.status}")
                             ],
                           )
                         ],
@@ -193,7 +193,7 @@ class _CaseStatus extends State<CaseStatus> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("Hearing")
+                              Text("${caseDetails?.caseStage}")
                             ],
                           ),
                           SizedBox(
@@ -217,7 +217,7 @@ class _CaseStatus extends State<CaseStatus> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("2 Sept 2019")
+                              Text("${caseDetails?.firstHearing}")
                             ],
                           ),
                           SizedBox(
@@ -271,7 +271,7 @@ class _CaseStatus extends State<CaseStatus> {
                               SizedBox(
                                 width: 90,
                               ),
-                              Text("426A, 200, 420, 198")
+                              Text("${caseDetails?.caseUnderSection}")
                             ],
                           )
                         ],

@@ -58,31 +58,6 @@ class _Home extends State<Home> {
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                     ),
-                    SizedBox(
-                      width: 25,
-                    ),
-                    Text(
-                      "28th",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          "OCT",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                        Text(
-                          "2023",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                      ],
-                    )
                   ],
                 ),
               )),

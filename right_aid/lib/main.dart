@@ -12,6 +12,7 @@ import 'package:right_aid/lawyer_home.dart';
 import 'package:right_aid/lawyer_connect.dart';
 import 'package:right_aid/current_case.dart';
 import 'utilities/fetch_details.dart';
+import 'lawyer_login.dart';
 
 void main() {
   runApp(const MyApp());

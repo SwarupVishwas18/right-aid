@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:right_aid/firebase_options.dart';
 import 'package:right_aid/lawyer_home.dart';
+import 'package:right_aid/lawyer_login.dart';
 import 'utilities/form_validation.dart';
 
 class LawyerSignup extends StatefulWidget {
@@ -70,7 +71,7 @@ class _LawyerLoginState extends State<LawyerSignup> {
       storeLawyerData();
       FormValidation.showToast('SignUp Successful');
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => (LawyerHome())));
+          context, MaterialPageRoute(builder: (context) => (LawyerLogin())));
     }
   }
 

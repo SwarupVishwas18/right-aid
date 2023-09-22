@@ -32,15 +32,15 @@ class Home extends StatelessWidget {
                     Text(
                       "NEXT COURT PROCEEDING : ",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                     ),
                     SizedBox(
-                      width: 25,
+                      width: 15,
                     ),
                     Text(
-                      "28th",
+                      "28",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
                     ),
                     SizedBox(
                       width: 10,
@@ -50,12 +50,12 @@ class Home extends StatelessWidget {
                         Text(
                           "OCT",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
+                              fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                         Text(
                           "2023",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
+                              fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                       ],
                     )
@@ -69,49 +69,43 @@ class Home extends StatelessWidget {
           ),
           Center(
             child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 35),
                 child: Row(children: [
                   ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 31, 44, 79),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5))),
-                      onPressed: () => {},
-                      child: const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            Image(image: AssetImage("assets/img/case.png")),
-                            Text(
-                              'Case Status',
-                              style: TextStyle(color: Colors.white),
-                            )
-                          ],
-                        ),
-                      )),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 31, 44, 79),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5))),
+                    onPressed: () => {},
+                    child: const Column(
+                      children: [
+                        Image(image: AssetImage("assets/img/case.png")),
+                        Text(
+                          'Case Status',
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    ),
+                  ),
                   const SizedBox(
                     width: 20,
                   ),
                   ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 31, 44, 79),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5))),
-                      onPressed: () => {},
-                      child: const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            Image(image: AssetImage("assets/img/lawyer.png")),
-                            Text(
-                              'Connect With Lawyer',
-                              style: TextStyle(color: Colors.white),
-                            )
-                          ],
-                        ),
-                      )),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 31, 44, 79),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5))),
+                    onPressed: () => {},
+                    child: const Column(
+                      children: [
+                        Image(image: AssetImage("assets/img/law.png")),
+                        Text(
+                          'Connect Lawyer',
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    ),
+                  ),
                 ])),
           ),
           const SizedBox(
@@ -119,28 +113,24 @@ class Home extends StatelessWidget {
           ),
           Center(
             child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 35),
                 child: Row(children: [
                   ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 31, 44, 79),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5))),
-                      onPressed: () => {},
-                      child: const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            Image(
-                                image: AssetImage("assets/img/Complaint.png")),
-                            Text(
-                              'File Grievence',
-                              style: TextStyle(color: Colors.white),
-                            )
-                          ],
-                        ),
-                      )),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 31, 44, 79),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5))),
+                    onPressed: () => {},
+                    child: const Column(
+                      children: [
+                        Image(image: AssetImage("assets/img/Complaint.png")),
+                        Text(
+                          'File Grievence',
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    ),
+                  ),
                   const SizedBox(
                     width: 20,
                   ),
@@ -163,11 +153,11 @@ class Home extends StatelessWidget {
                 ])),
           ),
           const SizedBox(
-            height: 20,
+            height: 25,
           ),
           Center(
             child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 35),
                 child: Row(children: [
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(

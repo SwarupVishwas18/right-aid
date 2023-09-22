@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:right_aid/firebase_options.dart';
 import 'utilities/form_validation.dart';
 import 'utilities/user.dart';
+import 'utilities/fetch_details.dart';
 import 'home.dart';
 
 class InmateLogin extends StatefulWidget {
@@ -11,6 +12,26 @@ class InmateLogin extends StatefulWidget {
 
   @override
   State<InmateLogin> createState() => _InmateLoginState();
+}
+
+void test() {
+  final crnNumber = '456789';
+
+  fetchCaseDetails(crnNumber).then((caseDetails) {
+    print(caseDetails.nextHearingDate);
+    print(caseDetails.stageOfCase);
+    print(caseDetails.coram);
+    print(caseDetails.judicialBranch);
+    print(caseDetails.state);
+    print(caseDetails.district);
+    print(caseDetails.petitioner);
+    print(caseDetails.respondent);
+    print(caseDetails.actsAndSections);
+    print(caseDetails.registrationNumber);
+    print(caseDetails.registrationDate);
+  }).catchError((error) {
+    print(error);
+  });
 }
 
 class _InmateLoginState extends State<InmateLogin> {

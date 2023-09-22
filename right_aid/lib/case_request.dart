@@ -1,7 +1,60 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:right_aid/utilities/fetch_details.dart';
+import 'firebase_options.dart';
+import 'utilities/user.dart';
 
-class CaseRequest extends StatelessWidget {
+class CaseRequest extends StatefulWidget {
   const CaseRequest({super.key});
+  @override
+  State<CaseRequest> createState() => _CaseRequest();
+}
+
+class _CaseRequest extends State<CaseRequest> {
+  CaseDetails? caseDetails;
+  String? pAdvocates;
+  String? rAdvocates;
+  String cnr =
+      "246810"; // use User.getCnr here but in the middle of application it will give null value
+  String? name;
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+    getDataFromDatabase();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  void getDataFromDatabase() async {
+    try {
+      await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform);
+      print('Initialized');
+    } catch (e) {
+      print('Error initializing Firebase: $e');
+    }
+    final CollectionReference inmateCollection =
+        FirebaseFirestore.instance.collection('inmate');
+    final QuerySnapshot snapshot =
+        await inmateCollection.where('cnr', isEqualTo: cnr).get();
+    final DocumentSnapshot document = snapshot.docs.first;
+    name = document.get('name');
+    print(name);
+  }
+
+  fetchData() async {
+    final caseData = await fetchCaseDetails(cnr);
+    setState(() {
+      caseDetails = caseData;
+      pAdvocates = caseDetails?.petitionerAdvocates.join(', ');
+      rAdvocates = caseDetails?.respondentsAdvocates.join(', ');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,14 +99,14 @@ class CaseRequest extends StatelessWidget {
                           color: const Color.fromARGB(255, 0, 0, 0)),
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                       child: Column(
                         children: [
                           Row(
                             children: [
-                              Text("CNR: KAMS1890992999992"),
+                              Text("CNR: ${cnr}"),
                               SizedBox(
                                 width: 30,
                               ),

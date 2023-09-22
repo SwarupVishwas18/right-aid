@@ -36,6 +36,10 @@ class CaseDetails {
   final String crnNumber;
   final List<String> petitionerAdvocates;
   final List<String> respondentsAdvocates;
+  final String firstHearing;
+  final String caseUnderSection;
+  final String status;
+  final String caseStage;
 
   CaseDetails.fromJson(Map<String, dynamic> json)
       : nextHearingDate = json['Next Hearing Date'],
@@ -51,7 +55,11 @@ class CaseDetails {
         registrationDate = json['registrationDate'],
         crnNumber = json['CRN Number'],
         petitionerAdvocates = json['petitioner advocates'].cast<String>(),
-        respondentsAdvocates = json['respondents advocates'].cast<String>();
+        respondentsAdvocates = json['respondents advocates'].cast<String>(),
+        caseUnderSection = json['caseUnderSection'],
+        status = json['status'],
+        caseStage = json['caseStage'],
+        firstHearing = json['firstHearing'];
 
   static List<CaseDetails> fromJsonList(List<dynamic> json) {
     return json.map((cases) => CaseDetails.fromJson(cases)).toList();

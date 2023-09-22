@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
                     Text(
                       "28",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                     ),
                     SizedBox(
                       width: 10,
@@ -50,12 +50,12 @@ class Home extends StatelessWidget {
                         Text(
                           "OCT",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                              fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                         Text(
                           "2023",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                              fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                       ],
                     )

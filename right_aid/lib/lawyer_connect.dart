@@ -5,7 +5,7 @@ class LawyerConnect extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (Scaffold(
+    return Scaffold(
       body: Container(
           height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
@@ -15,7 +15,7 @@ class LawyerConnect extends StatelessWidget {
           child: Column(children: [
             Row(
               children: [
-                const TextField(  
+                const TextField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderSide:
@@ -68,6 +68,6 @@ class LawyerConnect extends StatelessWidget {
                   ])),
             )
           ])),
-    ));
+    );
   }
 }

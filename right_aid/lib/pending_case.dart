@@ -1,35 +1,7 @@
 import 'package:flutter/material.dart';
-import 'utilities/fetch_details.dart';
 
-class CaseStatus extends StatefulWidget {
-  const CaseStatus({super.key});
-  @override
-  State<CaseStatus> createState() => _CaseStatus();
-}
-
-class _CaseStatus extends State<CaseStatus> {
-  CaseDetails? caseDetails;
-  String? pAdvocates;
-  String? rAdvocates;
-  @override
-  void initState() {
-    super.initState();
-    fetchData();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  fetchData() async {
-    final caseData = await fetchCaseDetails('456789');
-    setState(() {
-      caseDetails = caseData;
-      pAdvocates = caseDetails?.petitionerAdvocates.join(', ');
-      rAdvocates = caseDetails?.respondentsAdvocates.join(', ');
-    });
-  }
+class PendingCase extends StatelessWidget {
+  const PendingCase({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,19 +10,34 @@ class _CaseStatus extends State<CaseStatus> {
           height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/img/statusbg.png"),
+                  image: AssetImage("assets/img/chat_bg.png"),
                   fit: BoxFit.cover)),
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(children: [
                 const SizedBox(
-                  height: 70,
+                  height: 30,
+                ),
+                const Text(
+                  "Current Case",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
+                //add horizontal line
+
+                const Divider(
+                  color: Color.fromARGB(255, 186, 183, 183),
+                  height: 15,
+                  thickness: 0.7,
+                  indent: 0,
+                  endIndent: 0,
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
-                  child: const Text("Case Details"),
+                  child: const Text("Case Details",
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
+
                 const SizedBox(
                   height: 10,
                 ),
@@ -62,18 +49,18 @@ class _CaseStatus extends State<CaseStatus> {
                           color: const Color.fromARGB(255, 0, 0, 0)),
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: Padding(
+                    child: const Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                       child: Column(
                         children: [
                           Row(
                             children: [
-                              Text("CNR: ${caseDetails?.nextHearingDate}"),
+                              Text("CNR: KAMS1890992999992"),
                               SizedBox(
                                 width: 30,
                               ),
-                              Text("REG DATE: ${caseDetails?.registrationDate}")
+                              Text("REG DATE: 21/11/2020")
                             ],
                           ),
                           SizedBox(
@@ -81,12 +68,11 @@ class _CaseStatus extends State<CaseStatus> {
                           ),
                           Row(
                             children: [
-                              Text(
-                                  "REG NO: ${caseDetails?.registrationNumber}"),
+                              Text("REG NO: PCR/38/2020"),
                               SizedBox(
                                 width: 90,
                               ),
-                              Text("STATUS : ${caseDetails?.status}")
+                              Text("STATUS : PENDING")
                             ],
                           )
                         ],
@@ -97,7 +83,8 @@ class _CaseStatus extends State<CaseStatus> {
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
-                  child: const Text("Party Details"),
+                  child: const Text("Party Details",
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
                 const SizedBox(
                   height: 10,
@@ -110,7 +97,7 @@ class _CaseStatus extends State<CaseStatus> {
                           color: const Color.fromARGB(255, 0, 0, 0)),
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: Padding(
+                    child: const Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                       child: Column(
@@ -121,7 +108,7 @@ class _CaseStatus extends State<CaseStatus> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text(" ${caseDetails?.petitioner}")
+                              Text("Swarup Vishwas")
                             ],
                           ),
                           SizedBox(
@@ -133,7 +120,7 @@ class _CaseStatus extends State<CaseStatus> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("${pAdvocates}")
+                              Text("Riddhi Sonawane, Omkar Kanase")
                             ],
                           ),
                           SizedBox(
@@ -146,7 +133,7 @@ class _CaseStatus extends State<CaseStatus> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("${caseDetails?.respondent}")
+                              Text("Rakshada Giri")
                             ],
                           ),
                           SizedBox(
@@ -158,7 +145,7 @@ class _CaseStatus extends State<CaseStatus> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("${rAdvocates}")
+                              Text("Riddhi Sonawane, Gyanvi Patil")
                             ],
                           ),
                         ],
@@ -169,7 +156,8 @@ class _CaseStatus extends State<CaseStatus> {
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
-                  child: const Text("Case Status"),
+                  child: const Text("Case Status",
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
                 const SizedBox(
                   height: 10,
@@ -182,7 +170,7 @@ class _CaseStatus extends State<CaseStatus> {
                           color: const Color.fromARGB(255, 0, 0, 0)),
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: Padding(
+                    child: const Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                       child: Column(
@@ -193,7 +181,7 @@ class _CaseStatus extends State<CaseStatus> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("${caseDetails?.caseStage}")
+                              Text("Hearing")
                             ],
                           ),
                           SizedBox(
@@ -205,7 +193,7 @@ class _CaseStatus extends State<CaseStatus> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("${caseDetails?.judicialBranch}")
+                              Text("813-iv addl civil judge and jmfc")
                             ],
                           ),
                           SizedBox(
@@ -217,7 +205,7 @@ class _CaseStatus extends State<CaseStatus> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("${caseDetails?.firstHearing}")
+                              Text("2 Sept 2019")
                             ],
                           ),
                           SizedBox(
@@ -229,7 +217,7 @@ class _CaseStatus extends State<CaseStatus> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text('${caseDetails?.nextHearingDate}')
+                              Text("28 Aug")
                             ],
                           ),
                         ],
@@ -240,7 +228,8 @@ class _CaseStatus extends State<CaseStatus> {
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
-                  child: const Text("Acts"),
+                  child: const Text("Acts",
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
                 const SizedBox(
                   height: 10,
@@ -253,14 +242,19 @@ class _CaseStatus extends State<CaseStatus> {
                           color: const Color.fromARGB(255, 0, 0, 0)),
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: Padding(
+                    child: const Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                       child: Column(
                         children: [
-                          Container(
-                            child: Text(
-                                "Case Under Act: ${caseDetails?.actsAndSections}"),
+                          Row(
+                            children: [
+                              Text("Case Under Act:"),
+                              SizedBox(
+                                width: 110,
+                              ),
+                              Text("Under sec 200 of IPC")
+                            ],
                           ),
                           SizedBox(
                             height: 30,
@@ -271,12 +265,26 @@ class _CaseStatus extends State<CaseStatus> {
                               SizedBox(
                                 width: 90,
                               ),
-                              Text("${caseDetails?.caseUnderSection}")
+                              Text("426A, 200, 420, 198")
                             ],
                           )
                         ],
                       ),
                     )),
+
+                const TextField(
+                  maxLines: 8,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black, width: 1.0),
+                          borderRadius: BorderRadius.horizontal(
+                              left: Radius.circular(10),
+                              right: Radius.circular(10))),
+                      hintText: "Enter your tasks description",
+                      hintStyle: TextStyle(color: Colors.black12)),
+                ),
+                ElevatedButton(onPressed: () => {}, child: const Text("Accept"))
               ]),
             ),
           )),

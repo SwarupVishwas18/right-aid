@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:right_aid/case_request.dart';
 import 'package:right_aid/case_status.dart';
 import 'package:right_aid/file_greivance.dart';
 import 'package:right_aid/home.dart';
@@ -12,6 +11,8 @@ import 'package:right_aid/seminars_view.dart';
 import 'package:right_aid/lawyer_home.dart';
 import 'package:right_aid/lawyer_connect.dart';
 import 'package:right_aid/current_case.dart';
+import 'utilities/fetch_details.dart';
+import 'lawyer_login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Home(),
+      home: const CaseStatus(),
     );
   }
 }

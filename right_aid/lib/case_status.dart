@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'utilities/fetch_details.dart';
+import 'utilities/user.dart';
 
 class CaseStatus extends StatefulWidget {
   const CaseStatus({super.key});
@@ -23,7 +24,7 @@ class _CaseStatus extends State<CaseStatus> {
   }
 
   fetchData() async {
-    final caseData = await fetchCaseDetails('456789');
+    final caseData = await fetchCaseDetails(User.getCnr());
     setState(() {
       caseDetails = caseData;
       pAdvocates = caseDetails?.petitionerAdvocates.join(', ');

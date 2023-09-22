@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:right_aid/utilities/user.dart';
 import 'utilities/fetch_details.dart';
 
 class Home extends StatefulWidget {
@@ -16,7 +17,7 @@ class _Home extends State<Home> {
   }
 
   fetchData() async {
-    final caseData = await fetchCaseDetails('456789');
+    final caseData = await fetchCaseDetails(User.getCnr());
     setState(() {
       caseDetails = caseData;
     });

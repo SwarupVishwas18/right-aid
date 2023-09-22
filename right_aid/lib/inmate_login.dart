@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:right_aid/firebase_options.dart';
 import 'utilities/form_validation.dart';
 import 'utilities/user.dart';
+import 'utilities/fetch_details.dart';
 import 'home.dart';
 
 class InmateLogin extends StatefulWidget {

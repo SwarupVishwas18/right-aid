@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:right_aid/firebase_options.dart';
+import 'package:right_aid/inmate_signup.dart';
 import 'utilities/form_validation.dart';
 import 'utilities/user.dart';
 import 'home.dart';
@@ -178,6 +179,18 @@ class _InmateLoginState extends State<InmateLogin> {
                         ],
                       ),
                     ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    TextButton(
+                        onPressed: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const InmateSignup()))
+                            },
+                        child: const Text("Create an account instead")),
                     const SizedBox(
                       height: 30,
                     ),

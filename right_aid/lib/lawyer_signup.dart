@@ -187,3 +187,4 @@ class LawyerSignup extends StatelessWidget {
     );
   }
 }
+

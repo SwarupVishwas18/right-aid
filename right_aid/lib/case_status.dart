@@ -1,7 +1,35 @@
 import 'package:flutter/material.dart';
+import 'utilities/fetch_details.dart';
 
-class CaseStatus extends StatelessWidget {
+class CaseStatus extends StatefulWidget {
   const CaseStatus({super.key});
+  @override
+  State<CaseStatus> createState() => _CaseStatus();
+}
+
+class _CaseStatus extends State<CaseStatus> {
+  CaseDetails? caseDetails;
+  String? pAdvocates;
+  String? rAdvocates;
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  fetchData() async {
+    final caseData = await fetchCaseDetails('456789');
+    setState(() {
+      caseDetails = caseData;
+      pAdvocates = caseDetails?.petitionerAdvocates.join(', ');
+      rAdvocates = caseDetails?.respondentsAdvocates.join(', ');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,17 +60,17 @@ class CaseStatus extends StatelessWidget {
                       width: 1.0, color: const Color.fromARGB(255, 0, 0, 0)),
                   borderRadius: BorderRadius.circular(4),
                 ),
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          Text("CNR: KAMS1890992999992"),
+                          Text("CNR: ${caseDetails?.nextHearingDate}"),
                           SizedBox(
                             width: 30,
                           ),
-                          Text("REG DATE: 21/11/2020")
+                          Text("REG DATE: ${caseDetails?.registrationDate}")
                         ],
                       ),
                       SizedBox(
@@ -50,7 +78,7 @@ class CaseStatus extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Text("REG NO: PCR/38/2020"),
+                          Text("REG NO: ${caseDetails?.registrationNumber}"),
                           SizedBox(
                             width: 90,
                           ),
@@ -77,7 +105,7 @@ class CaseStatus extends StatelessWidget {
                       width: 1.0, color: const Color.fromARGB(255, 0, 0, 0)),
                   borderRadius: BorderRadius.circular(4),
                 ),
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   child: Column(
                     children: [
@@ -87,7 +115,7 @@ class CaseStatus extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("Swarup Vishwas")
+                          Text(" ${caseDetails?.petitioner}")
                         ],
                       ),
                       SizedBox(
@@ -99,22 +127,20 @@ class CaseStatus extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("Riddhi Sonawane, Omkar Kanase")
+                          Text("${pAdvocates}")
                         ],
                       ),
                       SizedBox(
                         height: 10,
                       ),
-                       Divider(
-                        color: Colors.black
-                      ),
+                      Divider(color: Colors.black),
                       Row(
                         children: [
                           Text("Respondant : "),
                           SizedBox(
                             width: 10,
                           ),
-                          Text("Rakshada Giri")
+                          Text("${caseDetails?.respondent}")
                         ],
                       ),
                       SizedBox(
@@ -126,7 +152,7 @@ class CaseStatus extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("Riddhi Sonawane, Gyanvi Patil")
+                          Text("${rAdvocates}")
                         ],
                       ),
                     ],
@@ -149,7 +175,7 @@ class CaseStatus extends StatelessWidget {
                       width: 1.0, color: const Color.fromARGB(255, 0, 0, 0)),
                   borderRadius: BorderRadius.circular(4),
                 ),
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   child: Column(
                     children: [
@@ -171,7 +197,7 @@ class CaseStatus extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("813-iv addl civil judge and jmfc")
+                          Text("${caseDetails?.judicialBranch}")
                         ],
                       ),
                       SizedBox(
@@ -195,7 +221,7 @@ class CaseStatus extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("28 Aug")
+                          Text('${caseDetails?.nextHearingDate}')
                         ],
                       ),
                     ],
@@ -218,7 +244,7 @@ class CaseStatus extends StatelessWidget {
                       width: 1.0, color: const Color.fromARGB(255, 0, 0, 0)),
                   borderRadius: BorderRadius.circular(4),
                 ),
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   child: Column(
                     children: [
@@ -228,7 +254,7 @@ class CaseStatus extends StatelessWidget {
                           SizedBox(
                             width: 110,
                           ),
-                          Text("Under sec 200 of IPC")
+                          Text('${caseDetails?.actsAndSections}')
                         ],
                       ),
                       SizedBox(

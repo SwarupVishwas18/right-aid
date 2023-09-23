@@ -209,6 +209,24 @@ class _LawyerLoginState extends State<LawyerSignup> {
                             height: 10,
                           ),
                           Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: TextField(
+                              controller: emailId,
+                              decoration: const InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.black, width: 1.0),
+                                      borderRadius: BorderRadius.horizontal(
+                                          left: Radius.circular(10),
+                                          right: Radius.circular(10))),
+                                  hintText: "Is Pro Bono Lawyer",
+                                  hintStyle: TextStyle(color: Colors.black54)),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
                               controller: password,

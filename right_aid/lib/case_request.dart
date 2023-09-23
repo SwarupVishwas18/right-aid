@@ -16,7 +16,7 @@ class _CaseRequest extends State<CaseRequest> {
   String? pAdvocates;
   String? rAdvocates;
   String cnr =
-      "246810"; // use User.getCnr here but in the middle of application it will give null value
+      "456789"; // use User.getCnr here but in the middle of application it will give null value
   String? name;
   String? gender;
   int? age;
@@ -48,8 +48,6 @@ class _CaseRequest extends State<CaseRequest> {
     name = document.get('name');
     gender = document.get("gender");
     age = document.get('age');
-    print(name);
-    print(gender);
   }
 
   fetchData() async {

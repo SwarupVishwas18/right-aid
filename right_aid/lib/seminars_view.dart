@@ -1,7 +1,45 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:right_aid/firebase_options.dart';
 
-class SeminarView extends StatelessWidget {
+class SeminarView extends StatefulWidget {
   const SeminarView({super.key});
+  @override
+  State<SeminarView> createState() => _SeminarView();
+}
+
+class _SeminarView extends State<SeminarView> {
+  String cnr = "456789";
+  int? rewardPoints;
+  @override
+  void initState() {
+    // TODO: implement initState
+    getDataFromDatabase();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  void getDataFromDatabase() async {
+    try {
+      await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform);
+      print('Initialized');
+    } catch (e) {
+      print('Error initializing Firebase: $e');
+    }
+    final CollectionReference inmateCollection =
+        FirebaseFirestore.instance.collection('inmate');
+    final QuerySnapshot snapshot =
+        await inmateCollection.where('cnr', isEqualTo: cnr).get();
+    final DocumentSnapshot document = snapshot.docs.first;
+    rewardPoints = document.get('reward_points');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +60,8 @@ class SeminarView extends StatelessWidget {
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                     ),
-                    const Text(
-                      "Total Reward Points : 10",
+                    Text(
+                      "Total Reward Points : ${rewardPoints}",
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                     ),

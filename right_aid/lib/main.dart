@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const MyHomePage(title: 'Right Aid'),
-      home: const SplashScreen(),
+      home: const CurrentCase(),
     );
   }
 }

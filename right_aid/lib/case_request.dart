@@ -18,6 +18,8 @@ class _CaseRequest extends State<CaseRequest> {
   String cnr =
       "246810"; // use User.getCnr here but in the middle of application it will give null value
   String? name;
+  String? gender;
+  int? age;
   @override
   void initState() {
     super.initState();
@@ -44,7 +46,10 @@ class _CaseRequest extends State<CaseRequest> {
         await inmateCollection.where('cnr', isEqualTo: cnr).get();
     final DocumentSnapshot document = snapshot.docs.first;
     name = document.get('name');
+    gender = document.get("gender");
+    age = document.get('age');
     print(name);
+    print(gender);
   }
 
   fetchData() async {
@@ -110,7 +115,7 @@ class _CaseRequest extends State<CaseRequest> {
                               SizedBox(
                                 width: 30,
                               ),
-                              Text("REG DATE: 21/11/2020")
+                              Text("REG DATE: ${caseDetails?.registrationDate}")
                             ],
                           ),
                           SizedBox(
@@ -118,11 +123,12 @@ class _CaseRequest extends State<CaseRequest> {
                           ),
                           Row(
                             children: [
-                              Text("REG NO: PCR/38/2020"),
+                              Text(
+                                  "REG NO: ${caseDetails?.registrationNumber}"),
                               SizedBox(
                                 width: 90,
                               ),
-                              Text("STATUS : PENDING")
+                              Text("STATUS : ${caseDetails?.status}")
                             ],
                           )
                         ],
@@ -148,14 +154,14 @@ class _CaseRequest extends State<CaseRequest> {
                           color: const Color.fromARGB(255, 0, 0, 0)),
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                       child: Column(
                         children: [
                           Row(
                             children: [
-                              Text("Name: Swarup Vishwas"),
+                              Text("Name: ${name}"),
                               SizedBox(
                                 width: 30,
                               ),
@@ -167,7 +173,7 @@ class _CaseRequest extends State<CaseRequest> {
                           ),
                           Row(
                             children: [
-                              Text("Gender/Age: Male/19"),
+                              Text("Gender/Age: ${gender} / ${age}"),
                               SizedBox(
                                 width: 90,
                               ),
@@ -196,7 +202,7 @@ class _CaseRequest extends State<CaseRequest> {
                           color: const Color.fromARGB(255, 0, 0, 0)),
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                       child: Column(
@@ -207,7 +213,7 @@ class _CaseRequest extends State<CaseRequest> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("Swarup Vishwas")
+                              Text("${caseDetails?.petitioner}")
                             ],
                           ),
                           SizedBox(
@@ -219,7 +225,7 @@ class _CaseRequest extends State<CaseRequest> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("-")
+                              Text("${pAdvocates}")
                             ],
                           ),
                           SizedBox(
@@ -232,7 +238,7 @@ class _CaseRequest extends State<CaseRequest> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("Rakshada Giri")
+                              Text("${caseDetails?.respondent}")
                             ],
                           ),
                           SizedBox(
@@ -244,7 +250,7 @@ class _CaseRequest extends State<CaseRequest> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("Riddhi Sonawane, Gyanvi Patil")
+                              Text("${rAdvocates}")
                             ],
                           ),
                         ],
@@ -269,7 +275,7 @@ class _CaseRequest extends State<CaseRequest> {
                           color: const Color.fromARGB(255, 0, 0, 0)),
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                       child: Column(
@@ -280,7 +286,7 @@ class _CaseRequest extends State<CaseRequest> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("Hearing")
+                              Text("${caseDetails?.caseStage}")
                             ],
                           ),
                           SizedBox(
@@ -292,7 +298,7 @@ class _CaseRequest extends State<CaseRequest> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("813-iv addl civil judge and jmfc")
+                              Text("${caseDetails?.judicialBranch}")
                             ],
                           ),
                           SizedBox(
@@ -304,7 +310,7 @@ class _CaseRequest extends State<CaseRequest> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("2 Sept 2019")
+                              Text("${caseDetails?.firstHearing}")
                             ],
                           ),
                           SizedBox(
@@ -316,7 +322,7 @@ class _CaseRequest extends State<CaseRequest> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("28 Aug 2022")
+                              Text("${caseDetails?.nextHearingDate}")
                             ],
                           ),
                         ],
@@ -341,7 +347,7 @@ class _CaseRequest extends State<CaseRequest> {
                           color: const Color.fromARGB(255, 0, 0, 0)),
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                       child: Column(
@@ -350,9 +356,9 @@ class _CaseRequest extends State<CaseRequest> {
                             children: [
                               Text("Case Under Act:"),
                               SizedBox(
-                                width: 110,
+                                width: 30,
                               ),
-                              Text("Under sec 200 of IPC")
+                              Text("${caseDetails?.actsAndSections}")
                             ],
                           ),
                           SizedBox(
@@ -364,7 +370,7 @@ class _CaseRequest extends State<CaseRequest> {
                               SizedBox(
                                 width: 90,
                               ),
-                              Text("426A, 200, 420, 198")
+                              Text("${caseDetails?.caseUnderSection}")
                             ],
                           )
                         ],
@@ -389,7 +395,7 @@ class _CaseRequest extends State<CaseRequest> {
                           color: const Color.fromARGB(255, 0, 0, 0)),
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                       child: Column(
@@ -397,7 +403,7 @@ class _CaseRequest extends State<CaseRequest> {
                           Row(
                             children: [
                               Text(
-                                  "Rohit Kumar, 28 years old Charged under IPC Section 279 and 304A for negligent driving leading to death Arrested on 14th February 2023 from Delhi Next hearing on 10th March 2023 at Patiala House Court Seeking bail approval before next hearing date as the only earning member in family"),
+                                  "${name}, ${age} years old Charged under ${caseDetails?.caseUnderSection} for negligent driving leading to death Arrested on ${caseDetails?.registrationDate} from Delhi Next hearing on ${caseDetails?.nextHearingDate} at ${caseDetails?.firstHearing} Seeking bail approval before next hearing date as the only earning member in family"),
                               // Text("Gender/Age: Male/19")
                             ],
                           ),

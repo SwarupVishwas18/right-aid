@@ -105,8 +105,8 @@ class _CaseRequest extends State<CaseRequest> {
                       borderRadius: BorderRadius.circular(4),
                     ),
                     child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10),
                       child: Column(
                         children: [
                           Row(

@@ -1,7 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:right_aid/utilities/fetch_details.dart';
 
-class CurrentCase extends StatelessWidget {
+class CurrentCase extends StatefulWidget {
   const CurrentCase({super.key});
+  State<CurrentCase> createState() => _CurrentCase();
+}
+
+class _CurrentCase extends State<CurrentCase> {
+  CaseDetails? caseDetails;
+  String? pAdvocates;
+  String? rAdvocates;
+  String cnr = "456789";
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  fetchData() async {
+    final caseData = await fetchCaseDetails(cnr);
+    setState(() {
+      caseDetails = caseData;
+      pAdvocates = caseDetails?.petitionerAdvocates.join(', ');
+      rAdvocates = caseDetails?.respondentsAdvocates.join(', ');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,18 +77,18 @@ class CurrentCase extends StatelessWidget {
                           color: const Color.fromARGB(255, 0, 0, 0)),
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                       child: Column(
                         children: [
                           Row(
                             children: [
-                              Text("CNR: KAMS1890992999992"),
+                              Text("CNR: ${cnr}"),
                               SizedBox(
                                 width: 30,
                               ),
-                              Text("REG DATE: 21/11/2020")
+                              Text("REG DATE: ${caseDetails?.registrationDate}")
                             ],
                           ),
                           SizedBox(
@@ -68,7 +96,8 @@ class CurrentCase extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              Text("REG NO: PCR/38/2020"),
+                              Text(
+                                  "REG NO: ${caseDetails?.registrationNumber}"),
                               SizedBox(
                                 width: 90,
                               ),
@@ -97,7 +126,7 @@ class CurrentCase extends StatelessWidget {
                           color: const Color.fromARGB(255, 0, 0, 0)),
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                       child: Column(
@@ -108,7 +137,7 @@ class CurrentCase extends StatelessWidget {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("Swarup Vishwas")
+                              Text("${caseDetails?.petitioner}")
                             ],
                           ),
                           SizedBox(
@@ -120,7 +149,7 @@ class CurrentCase extends StatelessWidget {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("Riddhi Sonawane, Omkar Kanase")
+                              Text("${pAdvocates}")
                             ],
                           ),
                           SizedBox(
@@ -133,7 +162,7 @@ class CurrentCase extends StatelessWidget {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("Rakshada Giri")
+                              Text("${caseDetails?.respondent}")
                             ],
                           ),
                           SizedBox(
@@ -145,7 +174,7 @@ class CurrentCase extends StatelessWidget {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("Riddhi Sonawane, Gyanvi Patil")
+                              Text("${rAdvocates}")
                             ],
                           ),
                         ],
@@ -170,7 +199,7 @@ class CurrentCase extends StatelessWidget {
                           color: const Color.fromARGB(255, 0, 0, 0)),
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                       child: Column(
@@ -181,7 +210,7 @@ class CurrentCase extends StatelessWidget {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("Hearing")
+                              Text("${caseDetails?.caseStage}")
                             ],
                           ),
                           SizedBox(
@@ -193,7 +222,7 @@ class CurrentCase extends StatelessWidget {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("813-iv addl civil judge and jmfc")
+                              Text("${caseDetails?.judicialBranch}")
                             ],
                           ),
                           SizedBox(
@@ -205,7 +234,7 @@ class CurrentCase extends StatelessWidget {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("2 Sept 2019")
+                              Text("${caseDetails?.firstHearing}")
                             ],
                           ),
                           SizedBox(
@@ -217,7 +246,7 @@ class CurrentCase extends StatelessWidget {
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("28 Aug")
+                              Text("${caseDetails?.nextHearingDate}")
                             ],
                           ),
                         ],
@@ -242,18 +271,19 @@ class CurrentCase extends StatelessWidget {
                           color: const Color.fromARGB(255, 0, 0, 0)),
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                       child: Column(
                         children: [
                           Row(
                             children: [
-                              Text("Case Under Act:"),
+                              Text(
+                                  "Case Under Act: ${caseDetails?.actsAndSections}"),
                               SizedBox(
                                 width: 110,
                               ),
-                              Text("Under sec 200 of IPC")
+                              Text("")
                             ],
                           ),
                           SizedBox(
@@ -265,7 +295,7 @@ class CurrentCase extends StatelessWidget {
                               SizedBox(
                                 width: 90,
                               ),
-                              Text("426A, 200, 420, 198")
+                              Text("${caseDetails?.caseUnderSection}")
                             ],
                           )
                         ],

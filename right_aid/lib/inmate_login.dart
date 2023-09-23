@@ -7,6 +7,7 @@ import 'utilities/form_validation.dart';
 import 'utilities/user.dart';
 import 'utilities/fetch_details.dart';
 import 'home.dart';
+import 'utilities/fetch_ngodetails.dart';
 
 class InmateLogin extends StatefulWidget {
   const InmateLogin({super.key});
@@ -18,11 +19,18 @@ class InmateLogin extends StatefulWidget {
 class _InmateLoginState extends State<InmateLogin> {
   late final TextEditingController password;
   late final TextEditingController cnr;
+
+  // void fetch() async {
+  //   List ngos = await getNGOs('Arunachal Pradesh');
+  //   print(ngos);
+  // }
+
   @override
   void initState() {
     cnr = TextEditingController();
     password = TextEditingController();
     super.initState();
+    // fetch();
   }
 
   @override

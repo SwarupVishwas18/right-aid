@@ -34,7 +34,7 @@ class _ChatGPTScreenState extends State<ChatGPTScreen> {
         isMe: false);
 
     setState(() {
-      if (chatGpt.text.contains("AI Model")) {
+      if (chatGpt.text.contains("AI Language Model")) {
         _messages.insert(0, myMsg);
       }
       _messages.insert(0, chatGpt);

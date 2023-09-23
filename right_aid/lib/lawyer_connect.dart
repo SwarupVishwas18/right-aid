@@ -1,8 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:right_aid/view_lawyers.dart';
+import 'utilities/user.dart';
 
-class LawyerConnect extends StatelessWidget {
+class LawyerConnect extends StatefulWidget {
   const LawyerConnect({super.key});
+  @override
+  State<LawyerConnect> createState() => _LawyerConnect();
+}
+
+class _LawyerConnect extends State<LawyerConnect> {
+  late final TextEditingController description;
+  late final TextEditingController priority;
+  @override
+  void initState() {
+    description = TextEditingController();
+    priority = TextEditingController();
+    super.initState();
+  }
+
+  void clicked() {
+    User.setDescription(description.text);
+    User.setPriority(priority.text);
+  }
+
+  @override
+  void dispose() {
+    description.dispose();
+    priority.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +53,8 @@ class LawyerConnect extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              const TextField(
+              TextField(
+                controller: description,
                 maxLines: 8,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -41,7 +68,8 @@ class LawyerConnect extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              const TextField(
+              TextField(
+                controller: priority,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 1.0),
@@ -56,6 +84,7 @@ class LawyerConnect extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () => {
+                  clicked(),
                   Navigator.push(
                       context,
                       MaterialPageRoute(

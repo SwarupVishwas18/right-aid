@@ -271,6 +271,13 @@ class CurrentCase extends StatelessWidget {
                         ],
                       ),
                     )),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: ElevatedButton(
+                    child: const Text("DECLINE CASE"),
+                    onPressed: () => {},
+                  ),
+                )
               ]),
             ),
           )),

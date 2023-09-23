@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:right_aid/chat_screen.dart';
 import 'package:right_aid/lawyer_connect.dart';
 import 'package:right_aid/utilities/user.dart';
 import 'utilities/fetch_details.dart';
@@ -163,7 +164,13 @@ class Home extends StatelessWidget {
                               const Color.fromARGB(255, 31, 44, 79),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5))),
-                      onPressed: () => {},
+                      onPressed: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ChatGPTScreen()))
+                          },
                       child: const Column(
                         children: [
                           Image(image: AssetImage("assets/img/case.png")),

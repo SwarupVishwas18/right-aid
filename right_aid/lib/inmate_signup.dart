@@ -46,6 +46,7 @@ class _InmateSignupState extends State<InmateSignup> {
       'email_id': emailId.text,
       'relation': relation.text,
       'password': password.text,
+      'reward_points': 0,
       'is_verified': false,
     });
   }

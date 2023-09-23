@@ -1,10 +1,31 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'firebase_options.dart';
 
-class MedicalStatus extends StatelessWidget {
+class MedicalStatus extends StatefulWidget {
   const MedicalStatus({super.key});
+  State<MedicalStatus> createState() => _MedicalStatus();
+}
+
+class _MedicalStatus extends State<MedicalStatus> {
+  Uri pdfLink = Uri(
+      scheme: 'https',
+      host: 'drive.google.com',
+      path: '/file/d/1O7WqQpfrada_z-I_ecidUKcfGJILYQmF/view');
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +105,9 @@ class MedicalStatus extends StatelessWidget {
             height: 50,
           ),
           ElevatedButton(
-            onPressed: () => {},
+            onPressed: () async {
+              await launchUrl(pdfLink);
+            },
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
                     const Color.fromARGB(255, 31, 44, 79))),

@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:right_aid/lawyer_connect.dart';
 import 'package:right_aid/utilities/user.dart';
 import 'utilities/fetch_details.dart';
+import 'case_status.dart';
+import 'view_lawyers.dart';
+import 'file_greivance.dart';
+import 'medical_status.dart';
+import 'seminars_view.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -78,7 +84,12 @@ class Home extends StatelessWidget {
                         backgroundColor: const Color.fromARGB(255, 31, 44, 79),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5))),
-                    onPressed: () => {},
+                    onPressed: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CaseStatus()))
+                    },
                     child: const Column(
                       children: [
                         Image(image: AssetImage("assets/img/case.png")),
@@ -97,7 +108,12 @@ class Home extends StatelessWidget {
                         backgroundColor: const Color.fromARGB(255, 31, 44, 79),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5))),
-                    onPressed: () => {},
+                    onPressed: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LawyerConnect()))
+                    },
                     child: const Column(
                       children: [
                         Image(image: AssetImage("assets/img/law.png")),
@@ -122,7 +138,12 @@ class Home extends StatelessWidget {
                         backgroundColor: const Color.fromARGB(255, 31, 44, 79),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5))),
-                    onPressed: () => {},
+                    onPressed: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const FileGrievance()))
+                    },
                     child: const Column(
                       children: [
                         Image(image: AssetImage("assets/img/Complaint.png")),
@@ -167,7 +188,13 @@ class Home extends StatelessWidget {
                               const Color.fromARGB(255, 31, 44, 79),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5))),
-                      onPressed: () => {},
+                      onPressed: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const MedicalStatus()))
+                          },
                       child: const Column(
                         children: [
                           Image(image: AssetImage("assets/img/medical.png")),
@@ -186,7 +213,12 @@ class Home extends StatelessWidget {
                               const Color.fromARGB(255, 31, 44, 79),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5))),
-                      onPressed: () => {},
+                      onPressed: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const SeminarView()))
+                          },
                       child: const Column(
                         children: [
                           Image(image: AssetImage("assets/img/Teacher.png")),

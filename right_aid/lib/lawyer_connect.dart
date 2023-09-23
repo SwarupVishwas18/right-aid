@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:right_aid/view_lawyers.dart';
 
 class LawyerConnect extends StatelessWidget {
   const LawyerConnect({super.key});
@@ -41,7 +42,13 @@ class LawyerConnect extends StatelessWidget {
                 height: 30,
               ),
               ElevatedButton(
-                onPressed: () => {},
+                onPressed: () => {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ViewLawyers(),
+                      ))
+                },
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
                         const Color.fromARGB(255, 31, 44, 79))),

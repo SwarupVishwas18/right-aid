@@ -22,6 +22,11 @@ class SeminarView extends StatelessWidget {
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                     ),
+                    const Text(
+                      "Total Reward Points : 10",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                    ),
                     const SizedBox(
                       height: 40,
                     ),

@@ -41,6 +41,19 @@ class LawyerConnect extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
+              const TextField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 1.0),
+                        borderRadius: BorderRadius.horizontal(
+                            left: Radius.circular(10),
+                            right: Radius.circular(10))),
+                    hintText: "Priority",
+                    hintStyle: TextStyle(color: Colors.black12)),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
               ElevatedButton(
                 onPressed: () => {
                   Navigator.push(

@@ -18,6 +18,7 @@ class _LawyerLoginState extends State<LawyerSignup> {
   late final TextEditingController contactNo;
   late final TextEditingController firm;
   late final TextEditingController password;
+  late final TextEditingController isProBono;
 
   void initState() {
     name = TextEditingController();
@@ -26,6 +27,7 @@ class _LawyerLoginState extends State<LawyerSignup> {
     contactNo = TextEditingController();
     firm = TextEditingController();
     password = TextEditingController();
+    isProBono = TextEditingController();
     super.initState();
   }
 
@@ -36,6 +38,7 @@ class _LawyerLoginState extends State<LawyerSignup> {
     contactNo.dispose();
     firm.dispose();
     password.dispose();
+    isProBono.dispose();
     super.dispose();
   }
 
@@ -56,6 +59,7 @@ class _LawyerLoginState extends State<LawyerSignup> {
       'phone_no': int.parse(contactNo.text),
       'firm': firm.text,
       'password': password.text,
+      'isProBono': isProBono.text,
     });
   }
 
@@ -65,7 +69,8 @@ class _LawyerLoginState extends State<LawyerSignup> {
         FormValidation.isTextEditingControllerEmpty(emailId) ||
         FormValidation.isTextEditingControllerEmpty(contactNo) ||
         FormValidation.isTextEditingControllerEmpty(firm) ||
-        FormValidation.isTextEditingControllerEmpty(password)) {
+        FormValidation.isTextEditingControllerEmpty(password) ||
+        FormValidation.isTextEditingControllerEmpty(isProBono)) {
       FormValidation.showToast('Fill all details in the Form');
     } else {
       storeLawyerData();
@@ -211,7 +216,7 @@ class _LawyerLoginState extends State<LawyerSignup> {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: TextField(
-                              controller: emailId,
+                              controller: isProBono,
                               decoration: const InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(

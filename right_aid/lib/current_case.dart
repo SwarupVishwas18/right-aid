@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:right_aid/utilities/fetch_details.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:right_aid/firebase_options.dart';
 
 class CurrentCase extends StatefulWidget {
   const CurrentCase({super.key});
@@ -16,6 +19,42 @@ class _CurrentCase extends State<CurrentCase> {
     super.initState();
     fetchData();
   }
+
+  // void declined() async {
+  //   try {
+  //     await Firebase.initializeApp(
+  //         options: DefaultFirebaseOptions.currentPlatform);
+  //     print('Initialized');
+  //   } catch (e) {
+  //     print('Error initializing Firebase: $e');
+  //   }
+  //   final CollectionReference requests =
+  //       FirebaseFirestore.instance.collection('requests');
+
+  //   final QuerySnapshot snapshot =
+  //       await requests.where('cnr', isEqualTo: cnr).get();
+
+  //   if (snapshot.docs.isNotEmpty) {
+  //     DocumentReference requestRef = requests.doc(snapshot.docs.first.id);
+
+  //     await requestRef.update({'isAccepted': false});
+  //   }
+  // }
+
+  // void declined() async {
+  //   await Firebase.initializeApp(
+  //       options: DefaultFirebaseOptions.currentPlatform);
+  //   final CollectionReference requests =
+  //       FirebaseFirestore.instance.collection('requests');
+
+  //   await requests.where('cnr', isEqualTo: cnr).get().then((snapshot) {
+  //     if (snapshot.docs.isNotEmpty) {
+  //       requests
+  //           .doc(snapshot.docs.first.id)
+  //           .update({'isAccepted': FieldValue.delete()});
+  //     }
+  //   });
+  // }
 
   @override
   void dispose() {

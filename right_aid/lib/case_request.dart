@@ -428,12 +428,14 @@ class _CaseRequest extends State<CaseRequest> {
                     width: 1.0, color: const Color.fromARGB(99, 103, 102, 102)),
                 borderRadius: BorderRadius.circular(4),
               ),
-              child: const Center(
-                child: Text(
-                  "Accept",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.white),
-                ),
+              child: Center(
+                child: TextButton(
+                    onPressed: () => {},
+                    child: const Text(
+                      "Accept",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
+                    )),
               ),
             ),
             Container(
@@ -445,12 +447,14 @@ class _CaseRequest extends State<CaseRequest> {
                     width: 1.0, color: Color.fromARGB(99, 103, 102, 102)),
                 borderRadius: BorderRadius.circular(4),
               ),
-              child: const Center(
-                child: Text(
-                  "Decline",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.white),
-                ),
+              child: Center(
+                child: TextButton(
+                    onPressed: () => {},
+                    child: const Text(
+                      "Decline",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
+                    )),
               ),
             ),
           ],
